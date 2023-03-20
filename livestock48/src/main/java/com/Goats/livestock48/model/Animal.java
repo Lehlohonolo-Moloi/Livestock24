@@ -21,6 +21,7 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    //@ManyToOne
-    //private AnimalType animalType;
+    @ManyToOne
+    @JoinColumn(name = "animal_type_id")
+    private AnimalType animalType;
 }
