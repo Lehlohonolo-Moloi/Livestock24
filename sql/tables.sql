@@ -1,50 +1,46 @@
+DROP DATABASE IF exists LiveStock;
+CREATE DATABASE LiveStock;
+USE Livestock;
 
-DROP DATABASE IF exists LiveStock48;
-CREATE DATABASE LiveStock48;
-USE Livestock48;
-
-CREATE TABLE Users
+CREATE TABLE Customer
 (
-    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id bigint PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20) NOT NULL,
     email VARCHAR(120) NOT NULL UNIQUE
 );
 
-CREATE TABLE AnimalTypes
+CREATE TABLE Animal_Type
 (
-    type_id int PRIMARY KEY AUTO_INCREMENT,
+    animal_type_id bigint PRIMARY KEY AUTO_INCREMENT,
     animal_name VARCHAR(20) NOT NULL,
     animal_breed VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE Animals
+CREATE TABLE Animal
 (
-    animal_id INT PRIMARY KEY AUTO_INCREMENT,
-    owner_id INT NOT NULL,
-    animal_type_id INT NOT NULL,
+    animal_id bigint PRIMARY KEY AUTO_INCREMENT,
+    customer_id bigint NOT NULL,
+    animal_type_id bigint NOT NULL,
     weight_in_kg FLOAT NOT NULL,
-    date_of_birth DATE NOT NULL,
-    FOREIGN KEY (owner_id) REFERENCES Users(user_id),
-    FOREIGN KEY (animal_type_id) REFERENCES AnimalTypes(type_id)
+    dob DATE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+    FOREIGN KEY (animal_type_id) REFERENCES Animal_Type(animal_type_id)
 );
 
-CREATE TABLE Orders
+CREATE TABLE Purchase
 (
-    order_id INT PRIMARY KEY AUTO_INCREMENT,
-    status_id SMALLINT NOT NULL,
-    customer_id INT,
-    FOREIGN KEY (customer_id) REFERENCES Users(user_id)
+    purchase_id bigint PRIMARY KEY AUTO_INCREMENT,
+    status bit NOT NULL,
+    customer_id bigint,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 );
 
-CREATE TABLE OrderElements
+CREATE TABLE Purchase_Element
 (
-    animal_id INT,
-    order_id INT,
-    FOREIGN KEY (animal_id) REFERENCES Animals(animal_id),
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+	purchase_element_id bigint PRIMARY KEY auto_increment,
+    animal_id bigint,
+    purchase_id bigint,
+    FOREIGN KEY (animal_id) REFERENCES Animal(animal_id),
+    FOREIGN KEY (purchase_id) REFERENCES Purchase(purchase_id)
 );
-
-
-
-

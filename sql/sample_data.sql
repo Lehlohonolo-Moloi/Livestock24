@@ -1,10 +1,10 @@
-Insert into Users (first_name, last_name, email) values 
+Insert into Customer (first_name, last_name, email) values 
     ('Hewitt','Nyambalo','hnyam@gmail.com'),
     ('Thabang','Khubheka','tkhubheka@gmail.com'),
     ('Lehlohonolo','Moloi','lmoloi@gmail.com')
 ;
 
-Insert into AnimalTypes (animal_name, animal_breed) values
+Insert into Animal_Type (animal_name, animal_breed) values
     ('Cow', 'Jersey'),
     ('Cow', 'Holstein-Friesian'),
     ('Sheep', 'Dorper'),
