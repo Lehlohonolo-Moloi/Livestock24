@@ -5,21 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Animal {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long animalId;
-    private Double weightInKg;
-    private LocalDate dob;
-    @ManyToOne
-    private Customer customer;
-    @ManyToOne
-    private AnimalType animalType;
+    private Long customerId;
+    private String firstName;
+    private String lastName;
+    private String email;
 }

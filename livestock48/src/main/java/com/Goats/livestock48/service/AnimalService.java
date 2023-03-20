@@ -44,8 +44,8 @@ public class AnimalService {
     public Animal updateWeight(Long id, Double weight){
         Animal animal = getAnimalById(id);
 
-        if(weight > 1 && !Objects.equals(animal.getWeightInKG(), weight)){
-            animal.setWeightInKG(weight);
+        if(weight > 1 && !Objects.equals(animal.getWeightInKg(), weight)){
+            animal.setWeightInKg(weight);
         }
 
         return animal;

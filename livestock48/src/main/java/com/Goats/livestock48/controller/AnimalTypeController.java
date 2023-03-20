@@ -38,7 +38,7 @@ public class AnimalTypeController {
     }
 
     @PutMapping(path = "{animalTypeId}")
-    public AnimalType updateAnimalType(@PathVariable("animalTypeId") Long animalTypeId, @RequestParam(required = true) Double cost){
-        return service.updateAnimalType(animalTypeId, cost);
+    public AnimalType updateAnimalType(@PathVariable("animalTypeId") Long animalTypeId, @RequestParam(required = true) String breed){
+        return service.updateAnimalType(animalTypeId, breed);
     }
 }

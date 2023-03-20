@@ -41,11 +41,13 @@ public class AnimalTypeService {
     }
 
     @Transactional
-    public AnimalType updateAnimalType(Long id, Double cost){
+    public AnimalType updateAnimalType(Long id, String breed){
         AnimalType type = getAnimalTypeById(id);
 
-        if(cost > 0 && !Objects.equals(type.getCostPerKG(), cost)){
-            type.setCostPerKG(cost);
+        if(breed != null
+                && breed.length() > 0
+                && !Objects.equals(type.getAnimalBreed(), breed)){
+            type.setAnimalBreed(breed);
         }
 
         return type;

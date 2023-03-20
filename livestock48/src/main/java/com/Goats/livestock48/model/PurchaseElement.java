@@ -9,12 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderElement {
+public class PurchaseElement {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long purchaseElementId;
     @OneToOne
     private Animal animal;
     @ManyToOne
-    private Order order;
+    private Purchase purchase;
 }
