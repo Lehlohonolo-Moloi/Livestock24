@@ -19,7 +19,8 @@ public class Animal {
     private Double weightInKg;
     private LocalDate dob;
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
-    @ManyToOne
-    private AnimalType animalType;
+    //@ManyToOne
+    //private AnimalType animalType;
 }

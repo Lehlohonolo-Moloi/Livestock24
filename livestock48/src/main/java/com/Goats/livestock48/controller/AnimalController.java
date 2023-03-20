@@ -17,9 +17,18 @@ public class AnimalController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("list_animals")
     public List<Animal> getAllAnimals(){
         return service.getAllAnimals();
+    }
+
+    @GetMapping("get_first_animal")
+    public String getFirstAnimal(){
+        List<Animal> animals = getAllAnimals();
+        if (animals.size() > 0){
+            return animals.get(0).toString();
+        }
+        else return "No Animals found";
     }
 
     @GetMapping(path = "{animalId}")
