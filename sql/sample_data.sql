@@ -15,4 +15,10 @@ Insert into Animal_Type (animal_name, animal_breed) values
     ('Goat', 'Kiko')
 ;
 
-CALL addRandomAnimals(10); -- choose how many animals you want to add
+CALL addRandomAnimals(30); -- choose how many animals you want to add
+
+CALL addRandomAnimalsToOrder(getCustomerID('hnyam@gmail.com'), 2); -- choose how many animals you want
+CALL addRandomAnimalsToOrder(getCustomerID('tkhubheka@gmail.com'), 3);
+CALL addRandomAnimalsToOrder(getCustomerID('lmoloi@gmail.com'), 5);
+
+SELECT * FROM Purchase_Element;

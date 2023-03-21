@@ -24,6 +24,7 @@ CREATE TABLE Animal
     animal_type_id bigint NOT NULL,
     weight_in_kg FLOAT NOT NULL,
     dob DATE NOT NULL,
+    price float NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
     FOREIGN KEY (animal_type_id) REFERENCES Animal_Type(animal_type_id)
 );
@@ -31,7 +32,8 @@ CREATE TABLE Animal
 CREATE TABLE Purchase
 (
     purchase_id bigint PRIMARY KEY AUTO_INCREMENT,
-    status bit NOT NULL,
+    status bit NOT NULL DEFAULT 0,
+    purchase_date DATE;
     customer_id bigint,
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 );
