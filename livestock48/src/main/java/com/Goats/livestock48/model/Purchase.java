@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Data
@@ -21,7 +20,7 @@ public class Purchase {
     private LocalDate purchaseDate;
     @ManyToOne
     private Customer customer;
-    @OneToMany
-    @JoinColumn(name = "purchase_element_id")
-    private Set<PurchaseElement> purchaseElements;
+//    @OneToMany
+//    @JoinColumn(name = "purchase_element_id")
+//    private Set<PurchaseElement> purchaseElements;
 }
