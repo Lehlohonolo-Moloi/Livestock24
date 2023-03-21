@@ -20,3 +20,5 @@ CALL addRandomAnimals(30); -- choose how many animals you want to add
 CALL addRandomAnimalsToOrder(getCustomerID('hnyam@gmail.com'), 2); -- choose how many animals you want
 CALL addRandomAnimalsToOrder(getCustomerID('tkhubheka@gmail.com'), 3);
 CALL addRandomAnimalsToOrder(getCustomerID('lmoloi@gmail.com'), 5);
+
+SELECT * FROM Purchase_Element;

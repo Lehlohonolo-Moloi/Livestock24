@@ -24,6 +24,7 @@ CREATE TABLE Animal
     animal_type_id bigint NOT NULL,
     weight_in_kg FLOAT NOT NULL,
     dob DATE NOT NULL,
+    price float NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
     FOREIGN KEY (animal_type_id) REFERENCES Animal_Type(animal_type_id)
 );
