@@ -17,5 +17,6 @@ public class PurchaseElement {
     @OneToOne
     private Animal animal;
     @ManyToOne
+    @JoinColumn(name = "purchase_id")
     private Purchase purchase;
 }
