@@ -16,19 +16,19 @@
     <table class="table table-striped">
       <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
         <th scope="col">Email</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Address</th>
       </tr>
       </thead>
       <tbody>
 
-      <tr th:each="item : ${User}">
-        <td th:text="${item.id}"></td>
-        <td th:text="${item.email}"></td>
-        <td th:text="${item.phone}"></td>
-        <td th:text="${item.address}"></td>
+      <tr th:each="list_all_users : ${Customer}">
+        <td th:text="${list_all_users.customerId}"></td>
+        <td th:text="${list_all_users.firstName}"></td>
+        <td th:text="${list_all_users.lastName}"></td>
+        <td th:text="${list_all_users.email}"></td>
       </tr>
       </tbody>
     </table>

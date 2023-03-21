@@ -18,7 +18,7 @@ public class CustomerController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("list_all_users")
     public List<Customer> getAllCustomers(){
         return service.getAllCustomers();
     }

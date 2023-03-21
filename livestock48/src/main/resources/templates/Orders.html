@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Trackzilla Applications</title>
+    <title>Livestock 48</title>
 </head>
 <body>
 <div class="container">
@@ -27,13 +27,14 @@
             </thead>
             <tbody>
 
-            <tr th:each="item : ${applications}">
-                <td th:text="${item.id}"></td>
-                <td th:text="${item.buyer_id}"></td>
-                <td th:text="${item.livestock_id}"></td>
-                <td th:text="${item.quantity}"></td>
-                <td th:text="${item.total}"></td>
-                <td th:text="${item.order_date}"></td>
+            <tr th:each="list_all_purchases : ${Purchase}">
+                <td th:text="${list_all_purchases.purchase_id}"></td>
+                <td th:text="${list_all_purchases.customer_id}"></td>
+                <td th:text="${list_all_purchases.livestock_id}"></td>
+                <td th:text="${list_all_purchases.status}"></td>
+                <td th:text="${list_all_purchases.quantity}"></td>
+                <td th:text="${list_all_purchases.total}"></td>
+                <td th:text="${list_all_purchases.order_date}"></td>
             </tr>
             </tbody>
         </table>

@@ -12,28 +12,33 @@
     <div th:insert="fragments/navbar.html"> </div>
 
     <div class="jumbotron">
+
         <h3>Livestock</h3>
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Animal Id</th>
+                <th scope="col">Animal Name</th>
+                <th scope="col">Animal Breed</th>
                 <th scope="col">Weight(kg)</th>
                 <th scope="col">Born in</th>
-                <th scope="col">Type</th>
-                <th scope="col">Owner</th>
+                <th scope="col">Owner Name</th>
+                <th scope="col">Owner LastName</th>
+                <th scope="col">Owner Email</th>
             </tr>
             </thead>
             <tbody>
 
-            <tr th:each="item : ${Livestock}">
-                <td th:text="${item.id}"></td>
-                <td th:text="${item.type}"></td>
-                <td th:text="${item.breed}"></td>
-                <td th:text="${item.age}"></td>
-                <td th:text="${item.gender}"></td>
-                <td th:text="${item.weight}"></td>
-                <td th:text="${item.description}"></td>
-                <td th:text="${item.price}"></td>
+            <tr th:each="list_animals : ${Animal}">
+                <td th:text="${list_animals.animalId}"></td>
+                <td th:text="${list_animals.animalType.animalName}"></td>
+                <td th:text="${list_animals.animalType.animalBreed}"></td>
+                <td th:text="${list_animals.weightInKg}"></td>
+                <td th:text="${list_animals.dob}"></td>
+                <td th:text="${list_animals.customer.firstName}"></td>
+                <td th:text="${list_animals.customer.lastName}"></td>
+                <td th:text="${list_animals.customer.email}"></td>
+
             </tr>
             </tbody>
         </table>

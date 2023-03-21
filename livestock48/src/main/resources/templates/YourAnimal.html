@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Livestock 24</title>
+
+  <title>Search Table</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      const searchButton = document.getElementById("search-button");
+
+   searchButton.addEventListener("click", () => {
+  const input = document.getElementById("search-input").value;
+  fetch(`api/v1/animals?animalId=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.getElementById("table-body");
+      tableBody.innerHTML = "";
+      data.forEach(list_animals => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td th:text="${list_animals.animalId}"></td>
+        <td th:text="${list_animals.animalType.animalName}"></td>
+        <td th:text="${list_animals.animalType.animalBreed}"></td>
+        <td th:text="${list_animals.weightInKg}"></td>
+        <td th:text="${list_animals.dob}"></td>
+        <td th:text="${list_animals.customer.firstName}"></td>
+        <td th:text="${list_animals.customer.lastName}"></td>
+        <td th:text="${list_animals.customer.email}"></td>
+
+        `;
+        tableBody.appendChild(tr);
+      });
+    });
+});
+
+    </script>
+</head>
+<body>
+<div class="container">
+  <div th:insert="fragments/navbar.html"> </div>
+
+  <div class="jumbotron">
+    <div>
+      <span style="font-Family : Roboto">Search for Animal Belonging to you using your id :</span>
+      <input id="search-input" style="boarder-radius: 20px" ></input>
+      <button  id="search-button" onclick="search()">Search</button>
+    </div>
+
+    <h3>Livestock</h3>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Animal Id</th>
+        <th scope="col">Animal Name</th>
+        <th scope="col">Animal Breed</th>
+        <th scope="col">Weight(kg)</th>
+        <th scope="col">Born in</th>
+        <th scope="col">Owner Name</th>
+        <th scope="col">Owner LastName</th>
+        <th scope="col">Owner Email</th>
+      </tr>
+      </thead>
+      <tbody id="table-body">
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
