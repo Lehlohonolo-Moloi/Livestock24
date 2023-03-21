@@ -33,7 +33,7 @@ CREATE TABLE Purchase
 (
     purchase_id bigint PRIMARY KEY AUTO_INCREMENT,
     status bit NOT NULL DEFAULT 0,
-    purchase_date DATE;
+    purchase_date DATE,
     customer_id bigint,
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 );
