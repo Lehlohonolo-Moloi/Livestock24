@@ -20,8 +20,8 @@ DROP PROCEDURE IF EXISTS addRandomAnimalsToOrder#
 CREATE PROCEDURE addRandomAnimalsToOrder(buyer_id INT, num_animals INT)
 BEGIN
 	DROP TEMPORARY TABLE if exists av_animal;
-    
     CREATE TEMPORARY TABLE av_animal(animal_id INT);
+    
     INSERT INTO av_animal (animal_id)
 	(
 		SELECT animal_id FROM availableAnimal
@@ -29,7 +29,6 @@ BEGIN
 			ORDER BY RAND()
 			LIMIT num_animals
 	);
-    
     
     SET @purchase_id = NULL;
     
@@ -39,12 +38,12 @@ BEGIN
         LIMIT 1 
 	INTO @purchase_id;
     
-    IF (@purchase_id = NULL) THEN
+    IF (@purchase_id IS NULL) THEN
 		INSERT INTO Purchase (customer_id, status) values (buyer_id, 0);
-		SELECT P.purchase_id 
-			FROM Purchase P 
-			WHERE (buyer_id = P.customer_id and P.status = 0) 
-			LIMIT 1 
+		SELECT P.purchase_id
+			FROM Purchase P
+			WHERE (buyer_id = P.customer_id and P.status = 0)
+			LIMIT 1
 		INTO @purchase_id;
     END IF;
     
