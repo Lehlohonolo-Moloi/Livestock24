@@ -31,7 +31,7 @@ CREATE TABLE Animal
 CREATE TABLE Purchase
 (
     purchase_id bigint PRIMARY KEY AUTO_INCREMENT,
-    status bit NOT NULL,
+    status bit NOT NULL DEFAULT 0,
     customer_id bigint,
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 );
