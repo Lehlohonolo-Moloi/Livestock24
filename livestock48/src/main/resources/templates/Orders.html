@@ -6,6 +6,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Livestock 48</title>
+    <script>
+        let response = "${list_purchases.purchase.status}";
+
+        let table = document.querySelector('#table table-striped');
+
+        let column = 1;
+
+        // loop over all the rows in the column and update each cell's value based on the response
+        for (let i = 0; i < table.rows.length; i++) {
+             let row = table.rows[i];
+             let cell = row.cells[column];
+
+             if (response) {
+                cell.textContent = 'Successful';
+             }
+             else {
+                cell.textContent = 'Not Successful';
+        }
+}
+
+    </script>
 </head>
 <body>
 <div class="container">
@@ -18,18 +39,24 @@
             <tr>
                 <th scope="col">Order Id</th>
                 <th scope="col">Animal</th>
+                <th scope="col">Photo</th>
                 <th scope="col">Breed</th>
                 <th scope="col">Buyer FirstName</th>
                 <th scope="col">Buyer LastName</th>
                 <th scope="col">Buyer Email</th>
-                <th scope="col">Status</th>
+                <th scope="col">Completed</th>
                 <th scope="col">Date</th>
             </tr>
             </thead>
             <tbody>
 
             <tr th:each="list_purchases : ${Purchase}">
-                <td th:text="${list_purchases.purchase.purchaseId}"></td>
+                <td th:text="${list_purchases.purchaseElementId}"></td>
+                <td>
+                    <a id="photoButton" th:href="@{'/images/'+ ${list_purchases.animal.animalType.animalBreed} +'.jpg'}">
+                        <img width="60px" height="60px" id="image1" th:src="@{'/images/'+ ${list_purchases.animal.animalType.animalBreed} +'.jpg'}">
+                    </a>
+                </td>
                 <td th:text="${list_purchases.animal.animalType.animalName}"></td>
                 <td th:text="${list_purchases.animal.animalType.animalBreed}"></td>
                 <td th:text="${list_purchases.animal.customer.firstName}"></td>

@@ -40,6 +40,7 @@ public class AnimalService {
         return animal;
     }
 
+
     @Transactional
     public Animal updateWeight(Long id, Double weight){
         Animal animal = getAnimalById(id);

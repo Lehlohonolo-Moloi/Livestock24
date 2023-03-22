@@ -31,8 +31,8 @@ public class AnimalController {
         else return "No Animals found";
     }
 
-    @GetMapping(path = "{animalId}")
-    public Animal getAnimalById(@PathVariable("animalId") Long animalId){
+    @GetMapping()
+    public Animal getAnimalById(@RequestParam("animalId") Long animalId){
         return service.getAnimalById(animalId);
     }
 
