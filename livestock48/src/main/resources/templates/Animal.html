@@ -4,7 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
     <title>Livestock 24</title>
 </head>
 <body>
@@ -14,6 +24,13 @@
     <div class="jumbotron">
 
         <h3>Livestock</h3>
+        <div>
+        <form th:action="@{/search}" method="get">
+            <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by ID"  >
+            <button type="submit" class="btn btn-info" >Search</button>
+            <button type="submit" class="btn btn-info" >Reset</button>
+        </form>
+        </div>
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
@@ -25,6 +42,7 @@
                 <th scope="col">Owner Name</th>
                 <th scope="col">Owner LastName</th>
                 <th scope="col">Owner Email</th>
+                <th scope="col">Edit Details</th>
             </tr>
             </thead>
             <tbody>
@@ -38,6 +56,12 @@
                 <td th:text="${list_animals.customer.firstName}"></td>
                 <td th:text="${list_animals.customer.lastName}"></td>
                 <td th:text="${list_animals.customer.email}"></td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-primary" id="editButton" ><i class="icon_pencil-edit"></i></a>
+                        <a class="btn btn-danger" id="deleteButton" ><i class="icon_close_alt2"></i></a>
+                    </div>
+                </td>
 
             </tr>
             </tbody>

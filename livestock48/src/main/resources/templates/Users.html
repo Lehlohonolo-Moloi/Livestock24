@@ -13,6 +13,13 @@
 
   <div class="jumbotron">
     <h3>Users</h3>
+    <div>
+      <form th:action="@{/search}" method="get">
+        <input id="txtSearch" type="text" name="keyword">
+        <button type="submit">Go</button>
+<!--        <button type="submit" class="btn btn-info" >Reset</button>-->
+      </form>
+    </div>
     <table class="table table-striped">
       <thead class="thead-dark">
       <tr>
@@ -20,6 +27,7 @@
         <th scope="col">FirstName</th>
         <th scope="col">LastName</th>
         <th scope="col">Email</th>
+        <th scope="col">Edit Details</th>
       </tr>
       </thead>
       <tbody>
@@ -29,7 +37,14 @@
         <td th:text="${list_all_users.firstName}"></td>
         <td th:text="${list_all_users.lastName}"></td>
         <td th:text="${list_all_users.email}"></td>
+        <td>
+          <div class="btn-group">
+            <a class="btn btn-primary" id="editButton" ><i class="icon_pencil-edit"></i></a>
+            <a class="btn btn-danger" id="deleteButton" ><i class="icon_close_alt2"></i></a>
+          </div>
+        </td>
       </tr>
+
       </tbody>
     </table>
   </div>
