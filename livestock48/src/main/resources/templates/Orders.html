@@ -17,18 +17,26 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Order Id</th>
-                <th scope="col">Buyer Id</th>
+                <th scope="col">Animal</th>
+                <th scope="col">Breed</th>
+                <th scope="col">Buyer FirstName</th>
+                <th scope="col">Buyer LastName</th>
+                <th scope="col">Buyer Email</th>
                 <th scope="col">Status</th>
                 <th scope="col">Date</th>
             </tr>
             </thead>
             <tbody>
 
-            <tr th:each="list_all_purchases : ${Purchase}">
-                <td th:text="${list_all_purchases.purchaseId}"></td>
-                <td th:text="${list_all_purchases.customer.customer}"></td>
-                <td th:text="${list_all_purchases.status}"></td>
-                <td th:text="${list_all_purchases.purchaseDate}"></td>
+            <tr th:each="list_purchases : ${Purchase}">
+                <td th:text="${list_purchases.purchase.purchaseId}"></td>
+                <td th:text="${list_purchases.animal.animalType.animalName}"></td>
+                <td th:text="${list_purchases.animal.animalType.animalBreed}"></td>
+                <td th:text="${list_purchases.animal.customer.firstName}"></td>
+                <td th:text="${list_purchases.animal.customer.lastName}"></td>
+                <td th:text="${list_purchases.animal.customer.email}"></td>
+                <td th:text="${list_purchases.purchase.status}"></td>
+                <td th:text="${list_purchases.purchase.purchaseDate}"></td>
 
             </tr>
             </tbody>

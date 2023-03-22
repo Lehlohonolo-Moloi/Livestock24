@@ -39,9 +39,9 @@
                 <th scope="col">Animal Breed</th>
                 <th scope="col">Weight(kg)</th>
                 <th scope="col">Born in</th>
+                <th scope="col">Price</th>
                 <th scope="col">Owner Name</th>
                 <th scope="col">Owner LastName</th>
-                <th scope="col">Owner Email</th>
                 <th scope="col">Edit Details</th>
             </tr>
             </thead>
@@ -53,9 +53,9 @@
                 <td th:text="${list_animals.animalType.animalBreed}"></td>
                 <td th:text="${list_animals.weightInKg}"></td>
                 <td th:text="${list_animals.dob}"></td>
+                <td th:text="${list_animals.price}"></td>
                 <td th:text="${list_animals.customer.firstName}"></td>
                 <td th:text="${list_animals.customer.lastName}"></td>
-                <td th:text="${list_animals.customer.email}"></td>
                 <td>
                     <div class="btn-group">
                         <a class="btn btn-primary" id="editButton" ><i class="icon_pencil-edit"></i></a>

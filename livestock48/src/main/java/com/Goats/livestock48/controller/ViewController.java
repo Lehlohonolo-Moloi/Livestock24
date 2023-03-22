@@ -29,14 +29,7 @@ public class ViewController {
         model.addObject("Animal",dataList);
         return model;
     }
-    @GetMapping("/Orders")
-    public ModelAndView viewOrders() {
-        List<Purchase> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/purchases/list_all_purchases", List.class);
-        ModelAndView model = new ModelAndView("Orders");
 
-        model.addObject("Purchase",dataList);
-        return model;
-    }
     @GetMapping("/Users")
     public ModelAndView viewUsers() {
         List<Customer> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/customers/list_all_users", List.class);
@@ -46,12 +39,12 @@ public class ViewController {
         return model;
     }
 
-//    @GetMapping("/Search")
-//    public ModelAndView viewUsers(Lonid) {
-//        List<Animal> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/customers/{id}", List.class);
-//        ModelAndView model = new ModelAndView("Users");
-//
-//        model.addObject("Customer",dataList);
-//        return model;
-//    }
+    @GetMapping("/Orders")
+    public ModelAndView viewOrdersElement() {
+        List<Purchase> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/purchaseElements/list_purchases", List.class);
+        ModelAndView model = new ModelAndView("Orders");
+
+        model.addObject("Purchase",dataList);
+        return model;
+    }
 }
