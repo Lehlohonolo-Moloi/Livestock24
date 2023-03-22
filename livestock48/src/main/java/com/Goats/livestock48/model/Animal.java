@@ -1,6 +1,5 @@
 package com.Goats.livestock48.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +21,8 @@ public class Animal {
     private Double weightInKg;
     @Column(name = "dob")
     private LocalDate dob;
+    @Column(name = "price")
+    private Double price;
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
