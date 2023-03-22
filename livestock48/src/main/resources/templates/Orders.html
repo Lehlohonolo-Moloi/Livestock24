@@ -16,25 +16,20 @@
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Buyer</th>
-                <th scope="col">Livestock</th>
+                <th scope="col">Order Id</th>
+                <th scope="col">Buyer Id</th>
                 <th scope="col">Status</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
                 <th scope="col">Date</th>
             </tr>
             </thead>
             <tbody>
 
             <tr th:each="list_all_purchases : ${Purchase}">
-                <td th:text="${list_all_purchases.purchase_id}"></td>
-                <td th:text="${list_all_purchases.customer_id}"></td>
-                <td th:text="${list_all_purchases.livestock_id}"></td>
+                <td th:text="${list_all_purchases.purchaseId}"></td>
+                <td th:text="${list_all_purchases.customer.customer}"></td>
                 <td th:text="${list_all_purchases.status}"></td>
-                <td th:text="${list_all_purchases.quantity}"></td>
-                <td th:text="${list_all_purchases.total}"></td>
-                <td th:text="${list_all_purchases.order_date}"></td>
+                <td th:text="${list_all_purchases.purchaseDate}"></td>
+
             </tr>
             </tbody>
         </table>
