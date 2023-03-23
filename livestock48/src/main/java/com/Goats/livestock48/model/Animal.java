@@ -29,7 +29,4 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name = "animal_type_id")
     private AnimalType animalType;
-    @JsonIgnore
-    @OneToOne(mappedBy = "animal")
-    private PurchaseElement purchaseElement;
 }
