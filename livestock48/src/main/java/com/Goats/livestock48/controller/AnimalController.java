@@ -1,5 +1,6 @@
 package com.Goats.livestock48.controller;
 
+import com.Goats.livestock48.Livestock48Application;
 import com.Goats.livestock48.model.Animal;
 import com.Goats.livestock48.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,9 @@ public class AnimalController {
         return service.getAllAnimals();
     }
 
-    @GetMapping("get_first_animal")
-    public String getFirstAnimal(){
-        List<Animal> animals = getAllAnimals();
-        if (animals.size() > 0){
-            return animals.get(0).toString();
-        }
-        else return "No Animals found";
+    @GetMapping("list_available_animals")
+    public List<Animal> getAvailableAnimals(){
+        return service.getAvailableAnimals();
     }
 
     @GetMapping()

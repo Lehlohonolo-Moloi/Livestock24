@@ -34,7 +34,7 @@
 
     <div class="jumbotron">
         <h3>Orders</h3>
-        <table class="table table-striped">
+        <table class="table table-striped" th:if="${customer!=null}">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Order Id</th>
@@ -68,6 +68,7 @@
             </tr>
             </tbody>
         </table>
+        <p class="error" th:if="${customer==null}">You need to be Logged-In to Access This Page</p>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

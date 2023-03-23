@@ -40,10 +40,17 @@ BEGIN
 	INTO @purchase_id;
     
     IF (@purchase_id IS NULL) THEN
-		INSERT INTO Purchase (customer_id, status) values (buyer_id, 0);
+		SET @complete = ROUND(RAND());
+        IF(@complete = 0) THEN
+			INSERT INTO Purchase (customer_id, status) 
+				values (buyer_id, @complete);
+		ELSE 
+			INSERT INTO Purchase (customer_id, status, purchase_date) 
+				VALUES (buyer_id, @complete, DATE_ADD(curdate() , INTERVAL -FLOOR(RAND() * 365*0.5) DAY));
+		END IF;
 		SELECT P.purchase_id
 			FROM Purchase P
-			WHERE (buyer_id = P.customer_id and P.status = 0)
+			WHERE (buyer_id = P.customer_id)
 			LIMIT 1
 		INTO @purchase_id;
     END IF;

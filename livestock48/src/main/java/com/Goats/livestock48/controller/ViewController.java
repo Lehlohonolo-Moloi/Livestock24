@@ -1,5 +1,6 @@
 package com.Goats.livestock48.controller;
 
+import com.Goats.livestock48.Livestock48Application;
 import com.Goats.livestock48.model.Animal;
 import com.Goats.livestock48.model.Customer;
 import com.Goats.livestock48.model.Purchase;
@@ -26,10 +27,11 @@ public class ViewController {
 
     @GetMapping("/Animal")
     public ModelAndView viewData() {
-        List<Animal> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/animals/list_animals", List.class);
+        List<Animal> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/animals/list_available_animals", List.class);
         ModelAndView model = new ModelAndView("Animal");
-
         model.addObject("Animal",dataList);
+        model.addObject("customer", Livestock48Application.getSelf());
+
         return model;
     }
 
@@ -37,8 +39,8 @@ public class ViewController {
     public ModelAndView viewUsers() {
         List<Customer> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/customers/list_all_users", List.class);
         ModelAndView model = new ModelAndView("Users");
-
         model.addObject("Customer",dataList);
+        model.addObject("customer", Livestock48Application.getSelf());
         return model;
     }
 
@@ -48,6 +50,8 @@ public class ViewController {
         ModelAndView model = new ModelAndView("Orders");
 
         model.addObject("Purchase",dataList);
+        model.addObject("customer", Livestock48Application.getSelf());
+
         return model;
     }
 
@@ -57,6 +61,8 @@ public class ViewController {
         ModelAndView model = new ModelAndView("Search");
 
         model.addObject("Customers",dataList);
+        model.addObject("customer", Livestock48Application.getSelf());
+
         return model;
     }
 

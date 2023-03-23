@@ -22,3 +22,4 @@ CALL addRandomAnimalsToOrder(getCustomerID('tkhubheka@gmail.com'), 3);
 CALL addRandomAnimalsToOrder(getCustomerID('lmoloi@gmail.com'), 5);
 
 SELECT * FROM Purchase_Element;
+SELECT * FROM Purchase;
