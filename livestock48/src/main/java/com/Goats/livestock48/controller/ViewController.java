@@ -66,4 +66,10 @@ public class ViewController {
         return "Registration";
     }
 
+    @GetMapping("/Login")
+    public String viewLogin(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "Login";
+    }
+
 }

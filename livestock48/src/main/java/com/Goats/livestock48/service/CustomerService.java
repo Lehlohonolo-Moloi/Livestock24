@@ -1,5 +1,6 @@
 package com.Goats.livestock48.service;
 
+import com.Goats.livestock48.Livestock48Application;
 import com.Goats.livestock48.model.Customer;
 import com.Goats.livestock48.repository.CustomerRepository;
 import jakarta.transaction.Transactional;

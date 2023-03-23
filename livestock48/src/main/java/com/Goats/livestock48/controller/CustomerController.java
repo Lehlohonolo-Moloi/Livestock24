@@ -1,5 +1,6 @@
 package com.Goats.livestock48.controller;
 
+import com.Goats.livestock48.Livestock48Application;
 import com.Goats.livestock48.model.Customer;
 import com.Goats.livestock48.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +21,9 @@ import java.util.List;
 public class CustomerController {
 
     private final CustomerService service;
+    @Autowired
+    private ViewController viewController;
+
 
     @Autowired
     public CustomerController(CustomerService service) {
@@ -34,9 +41,18 @@ public class CustomerController {
     }
 
     @PostMapping(value = "register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Customer addCustomer(@ModelAttribute Customer customer){
-        return service.addCustomer(customer);
+    public ModelAndView addCustomer(@ModelAttribute Customer customer){
+        service.addCustomer(customer);
+        customer = getCustomerByEmail(customer.getEmail());
+        Livestock48Application.setSelf(customer);
+        return viewController.viewData();
+    }
+
+    @PostMapping(value = "login")
+    public ModelAndView setCustomer(@ModelAttribute Customer customer){
+        customer = getCustomerByEmail(customer.getEmail());
+        Livestock48Application.setSelf(customer);
+        return viewController.viewData();
     }
 
     @DeleteMapping(path = "{customerId}")
