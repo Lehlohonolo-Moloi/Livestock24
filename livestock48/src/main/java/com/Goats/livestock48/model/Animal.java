@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Data
@@ -26,10 +28,16 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+    @Transient
+    private Integer age;
     @ManyToOne
     @JoinColumn(name = "animal_type_id")
     private AnimalType animalType;
     @JsonIgnore
     @OneToOne(mappedBy = "animal", orphanRemoval = true)
     private PurchaseElement purchaseElement;
+
+    public Integer getAge(){
+        return Period.between(dob, LocalDate.now()).getYears();
+    }
 }
