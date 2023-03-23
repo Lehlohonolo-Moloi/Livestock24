@@ -50,6 +50,7 @@ public class ViewController {
         model.addObject("Purchase",dataList);
         return model;
     }
+
     @GetMapping()
     public ModelAndView searchById(@RequestParam("customerId") Long customerId) {
         List<Customer> dataList = restTemplate.getForObject("http://localhost:8080/api/v1/customers/" , List.class);
@@ -57,6 +58,12 @@ public class ViewController {
 
         model.addObject("Customers",dataList);
         return model;
+    }
+
+    @GetMapping("/Registration")
+    public String viewRegistration(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "Registration";
     }
 
 }

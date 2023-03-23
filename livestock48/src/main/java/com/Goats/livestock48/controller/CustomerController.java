@@ -4,9 +4,12 @@ import com.Goats.livestock48.model.Customer;
 import com.Goats.livestock48.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,8 +33,9 @@ public class CustomerController {
         return service.getCustomerById(customerId);
     }
 
-    @PostMapping
-    public Customer addCustomer(@RequestBody Customer customer){
+    @PostMapping(value = "register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Customer addCustomer(@ModelAttribute Customer customer){
         return service.addCustomer(customer);
     }
 
