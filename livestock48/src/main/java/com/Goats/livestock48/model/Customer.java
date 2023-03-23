@@ -26,9 +26,9 @@ public class Customer {
     @Column(name = "email")
     private String email = "";
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", orphanRemoval = true)
     private Set<Animal> animals;
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", orphanRemoval = true)
     private Set<Purchase> purchases;
 }

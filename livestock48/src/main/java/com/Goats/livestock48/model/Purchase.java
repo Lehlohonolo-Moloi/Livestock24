@@ -28,6 +28,6 @@ public class Purchase {
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @JsonIgnore
-    @OneToMany(mappedBy = "purchase")
+    @OneToMany(mappedBy = "purchase", orphanRemoval = true)
     private Set<PurchaseElement> purchaseElements;
 }

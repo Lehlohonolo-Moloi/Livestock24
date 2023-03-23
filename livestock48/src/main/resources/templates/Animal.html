@@ -39,10 +39,9 @@
                 <th scope="col">Animal Name</th>
                 <th scope="col">Animal Breed</th>
                 <th scope="col">Weight(kg)</th>
-                <th scope="col">Born in</th>
+                <th scope="col">Age</th>
                 <th scope="col">Price</th>
                 <th scope="col">Owner Name</th>
-                <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -57,20 +56,16 @@
                 <td th:text="${list_animals.animalType.animalName}"></td>
                 <td th:text="${list_animals.animalType.animalBreed}"></td>
                 <td th:text="${list_animals.weightInKg}"></td>
-                <td th:text="${list_animals.dob}"></td>
+                <td th:text="${list_animals.age}"></td>
                 <td th:text="${list_animals.price}"></td>
                 <td th:text="${list_animals.customer.firstName}"></td>
-                <td>
-                    <form action="/delete" method="post">
-                        <input type="hidden" name="id" value="{{list_animals.animalId}}">
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
+
             </tbody>
         </table>
-
         <script>
+        </script>
+
+        <script type="text/javascript">
         function deleteAnimal(id) {
             if (confirm("Are you sure you want to delete this student?")) {
                 $.ajax({
@@ -85,6 +80,7 @@
                 });
             }
         }
+        </script>
 
     </div>
 </div>

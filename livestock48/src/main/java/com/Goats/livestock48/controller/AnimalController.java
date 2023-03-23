@@ -5,6 +5,8 @@ import com.Goats.livestock48.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @RestController
@@ -50,4 +52,6 @@ public class AnimalController {
     public Animal updateAnimal(@PathVariable("animalId") Long animalId, @RequestParam(required = true) Double weight){
         return service.updateWeight(animalId, weight);
     }
+
+
 }

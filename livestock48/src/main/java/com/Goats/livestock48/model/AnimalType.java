@@ -23,6 +23,6 @@ public class AnimalType {
     @Column(name = "animal_breed")
     private String animalBreed;
     @JsonIgnore
-    @OneToMany(mappedBy = "animalType")
+    @OneToMany(mappedBy = "animalType", orphanRemoval = true)
     private Set<Animal> animals;
 }
