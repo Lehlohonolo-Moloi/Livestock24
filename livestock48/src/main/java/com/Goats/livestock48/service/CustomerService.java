@@ -1,6 +1,6 @@
 package com.Goats.livestock48.service;
 
-import com.Goats.livestock48.Livestock48Application;
+import com.Goats.livestock48.exception.CustomException;
 import com.Goats.livestock48.model.Customer;
 import com.Goats.livestock48.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
@@ -25,7 +25,7 @@ public class CustomerService {
 
     public Customer getCustomerById(Long id){
         Customer customer = repository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Customer with id " + id + " does not exist"));
+                .orElseThrow(() -> new CustomException("Customer with id " + id + " does not exist"));
         return customer;
     }
 
@@ -56,7 +56,7 @@ public class CustomerService {
 
     public Customer getCustomerByEmail(String email){
         return repository.findCustomerByEmail(email)
-                .orElseThrow(() -> new IllegalStateException("Customer with email" + email + " does not exist"));
+                .orElseThrow(() -> new CustomException("Customer with email" + email + " does not exist"));
     }
 
 }

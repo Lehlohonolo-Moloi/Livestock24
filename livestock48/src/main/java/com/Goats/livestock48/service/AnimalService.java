@@ -1,5 +1,6 @@
 package com.Goats.livestock48.service;
 
+import com.Goats.livestock48.exception.CustomException;
 import com.Goats.livestock48.model.Animal;
 import com.Goats.livestock48.repository.AnimalRepository;
 import jakarta.transaction.Transactional;
@@ -26,7 +27,7 @@ public class AnimalService {
 
     public Animal getAnimalById(Long id){
         return repository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Animal with id " + id + " does not exist"));
+                .orElseThrow(() -> new CustomException("Animal with id " + id + " does not exist"));
     }
 
     public Animal addAnimal(Animal animal){

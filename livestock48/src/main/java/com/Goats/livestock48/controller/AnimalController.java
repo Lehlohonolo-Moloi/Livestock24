@@ -1,5 +1,6 @@
 package com.Goats.livestock48.controller;
 
+import com.Goats.livestock48.exception.CustomException;
 import com.Goats.livestock48.model.Animal;
 import com.Goats.livestock48.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class AnimalController {
         if (animals.size() > 0){
             return animals.get(0).toString();
         }
-        else return "No Animals found";
+        else throw new CustomException("No animals found");
     }
 
     @GetMapping()

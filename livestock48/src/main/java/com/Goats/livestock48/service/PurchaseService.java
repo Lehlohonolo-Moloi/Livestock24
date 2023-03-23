@@ -1,5 +1,6 @@
 package com.Goats.livestock48.service;
 
+import com.Goats.livestock48.exception.CustomException;
 import com.Goats.livestock48.model.Purchase;
 import com.Goats.livestock48.repository.PurchaseRepository;
 import jakarta.transaction.Transactional;
@@ -22,9 +23,8 @@ public class PurchaseService {
     }
 
     public Purchase getPurchaseById(Long id){
-        Purchase purchase = repository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("Purchase with id " + id + " does not exist."));
-        return purchase;
+        return repository.findById(id)
+                .orElseThrow(() -> new CustomException("Purchase with id " + id + " does not exist."));
     }
 
     public Purchase addPurchase(Purchase purchase){

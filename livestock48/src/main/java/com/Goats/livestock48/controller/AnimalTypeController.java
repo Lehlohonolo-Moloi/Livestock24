@@ -41,4 +41,5 @@ public class AnimalTypeController {
     public AnimalType updateAnimalType(@PathVariable("animalTypeId") Long animalTypeId, @RequestParam(required = true) String breed){
         return service.updateAnimalType(animalTypeId, breed);
     }
+
 }

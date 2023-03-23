@@ -1,5 +1,6 @@
 package com.Goats.livestock48.service;
 
+import com.Goats.livestock48.exception.CustomException;
 import com.Goats.livestock48.model.PurchaseElement;
 import com.Goats.livestock48.repository.PurchaseElementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,8 @@ public class PurchaseElementService {
     }
 
     public PurchaseElement getPurchaseElementById(Long id){
-        PurchaseElement element = repository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("PurchaseElement with id" + id + " does not exist."));
-        return element;
+        return repository.findById(id)
+                .orElseThrow(() -> new CustomException("PurchaseElement with id" + id + " does not exist."));
     }
 
     public PurchaseElement deletePurchaseElement(Long id){
