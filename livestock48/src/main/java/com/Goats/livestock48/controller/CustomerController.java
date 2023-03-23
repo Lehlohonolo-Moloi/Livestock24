@@ -3,6 +3,8 @@ package com.Goats.livestock48.controller;
 import com.Goats.livestock48.model.Customer;
 import com.Goats.livestock48.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class CustomerController {
         return service.getAllCustomers();
     }
 
-    @GetMapping(path = "{customerId}")
-    public Customer getCustomerById(@PathVariable("customerId") Long customerId){
+    @GetMapping()
+    public Customer getCustomerById(@RequestParam("customerId") Long customerId){
         return service.getCustomerById(customerId);
     }
 
@@ -42,4 +44,5 @@ public class CustomerController {
     public Customer updateCustomerEmail(@PathVariable("customerId") Long customerId, @RequestParam(required = true, name = "email") String email){
         return service.updateCustomerEmail(customerId, email);
     }
+
 }

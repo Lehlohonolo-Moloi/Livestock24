@@ -17,7 +17,7 @@ public class PurchaseElementsController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("list_purchases")
     public List<PurchaseElement> getAllPurchaseElements(){
         return service.getAllPurchaseElements();
     }
