@@ -53,8 +53,5 @@ public class AnimalController {
         return service.updateWeight(animalId, weight);
     }
 
-    @GetMapping("animal_age")
-    public Integer getAnimalAge(@RequestBody Animal animal){
-        return Period.between(animal.getDob(), LocalDate.now()).getYears();
-    }
+
 }
