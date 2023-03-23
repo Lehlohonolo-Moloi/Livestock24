@@ -30,6 +30,6 @@ public class Animal {
     @JoinColumn(name = "animal_type_id")
     private AnimalType animalType;
     @JsonIgnore
-    @OneToOne(mappedBy = "animal")
+    @OneToOne(mappedBy = "animal", orphanRemoval = true)
     private PurchaseElement purchaseElement;
 }
