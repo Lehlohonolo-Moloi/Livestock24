@@ -53,6 +53,9 @@ public class CustomerService {
         return customer;
     }
 
-
+    public Customer getCustomerByEmail(String email){
+        return repository.findCustomerByEmail(email)
+                .orElseThrow(() -> new IllegalStateException("Customer with email" + email + " does not exist"));
+    }
 
 }

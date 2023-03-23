@@ -53,5 +53,8 @@ public class AnimalController {
         return service.updateWeight(animalId, weight);
     }
 
-
+    @GetMapping(path = "{name}")
+    public List<Animal> getAnimalsByName(@PathVariable("name") String name){
+        return service.getAnimalsByName(name);
+    }
 }

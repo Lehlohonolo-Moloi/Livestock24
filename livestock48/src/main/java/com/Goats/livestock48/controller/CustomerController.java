@@ -45,4 +45,9 @@ public class CustomerController {
         return service.updateCustomerEmail(customerId, email);
     }
 
+    @GetMapping(path = "{email}")
+    public Customer getCustomerByEmail(@PathVariable("email") String email){
+        return service.getCustomerByEmail(email);
+    }
+
 }

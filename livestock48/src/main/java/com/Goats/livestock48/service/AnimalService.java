@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class AnimalService {
@@ -24,9 +25,8 @@ public class AnimalService {
     }
 
     public Animal getAnimalById(Long id){
-        Animal animal = repository.findById(id)
+        return repository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Animal with id " + id + " does not exist"));
-        return animal;
     }
 
     public Animal addAnimal(Animal animal){
@@ -50,6 +50,12 @@ public class AnimalService {
         }
 
         return animal;
+    }
+
+    public List<Animal> getAnimalsByName(String name){
+        return getAllAnimals().stream()
+                .filter(animal -> animal.getAnimalType().getAnimalName().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
     }
 
 
