@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -41,7 +42,11 @@ public class PurchaseService {
     @Transactional
     public Purchase updateStatus(Long id, Boolean status){
         Purchase purchase = getPurchaseById(id);
-        purchase.setStatus(status);
+        if(status){
+            purchase.setStatus(status);
+            purchase.setPurchaseDate(LocalDate.now());
+        }
+
         return purchase;
     }
 }
