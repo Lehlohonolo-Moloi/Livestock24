@@ -1,17 +1,10 @@
 package com.Goats.livestock48.controller;
 
-<<<<<<< HEAD
-import com.Goats.livestock48.Livestock48Application;
-=======
-import com.Goats.livestock48.exception.CustomException;
->>>>>>> 0b9256649a8c9bcbed07765f02704de475a4af80
 import com.Goats.livestock48.model.Animal;
 import com.Goats.livestock48.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.List;
 
 @RestController

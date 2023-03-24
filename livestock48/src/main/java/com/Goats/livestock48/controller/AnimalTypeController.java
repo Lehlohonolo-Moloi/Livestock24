@@ -27,7 +27,7 @@ public class AnimalTypeController {
         return service.getAnimalTypeById(animalTypeId);
     }
 
-    @PostMapping
+    @PostMapping(path = "add")
     public AnimalType addAnimalType(@RequestBody AnimalType animalType){
         return service.addAnimalType(animalType);
     }
